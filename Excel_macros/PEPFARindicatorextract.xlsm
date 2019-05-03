@@ -1,0 +1,18 @@
+    
+'This Excel macro will delete all worksheets except those specified
+'Use case: VRT Indicator extracts, where each indicator is on a separate sheet, but perhaps you only need a few indicators to review
+'Example on creating a macro: https://www.excel-easy.com/vba/create-a-macro.html
+ 'the macro keeps worksheets titled "HE-140-PEPFAR" and "HE-140-PEPFAR (FY2017)" and "HE_HIV_140" and "HE_HIV_185" and "HE-185-PEPFAR" 
+
+Sub DeleteSheets1()
+    Dim xWs As Worksheet
+    Application.ScreenUpdating = False
+    Application.DisplayAlerts = False
+    For Each xWs In Application.ActiveWorkbook.Worksheets
+        If xWs.Name <> "HE-140-PEPFAR" And xWs.Name <> "HE-140-PEPFAR (FY2017)" And xWs.Name <> "HE_HIV_140" And xWs.Name <> "HE_HIV_185" And xWs.Name <> "HE-185-PEPFAR" Then
+            xWs.Delete
+        End If
+    Next
+    Application.DisplayAlerts = True
+    Application.ScreenUpdating = True
+End Sub
